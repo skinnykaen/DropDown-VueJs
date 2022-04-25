@@ -2,8 +2,8 @@
   <div class="switchTheme">
     <span>THEME</span>
     <div class="themes">
-      <span class="dark" @click="toggleTheme">DARK</span>
-      <span class="light" @click="toggleTheme">LIGHT</span>
+      <span class="darkTheme" @click="toggleTheme">DARK</span>
+      <span class="lightTheme" @click="toggleTheme">LIGHT</span>
     </div>
   </div>
 </template>
@@ -12,14 +12,17 @@
 export default {
   data() {
     return {
-      isDark: true,
+      mode: "light",
     };
   },
   methods: {
-    toggleTheme() {
-      console.log("Хочу сменить тему");
-      console.log(this.isDark)
-      this.isDark = !this.isDark;
+    toggleTheme(e) { 
+      if(e.target.className === "darkTheme"){
+        this.mode = "dark"
+      }else{
+        this.mode = "light"
+      }
+      this.$emit('toggleTheme', this.mode)
     },
   },
 };

@@ -1,28 +1,55 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app" :class="mode">
+    <SwitchTheme @toggleTheme="toggleTheme"></SwitchTheme>
+    <DropDown :mode="mode"></DropDown>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import SwitchTheme from "@/components/SwitchTheme";
+import DropDown from "@/components/DropDown";
 export default {
-  name: 'App',
+  data() {
+    return {
+      mode: "light",
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    SwitchTheme,
+    DropDown,
+  },
+  methods: {
+    toggleTheme(mode) {
+      this.mode = mode;
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+.app {
+  box-sizing: border-box;
+  width: 80%;
+  height: 100%;
+  padding: 2rem;
+  width: 100vw;
+  min-height: 100vh;
+  transition: background 0.3s ease-in-out;
+}
+
+.app.light {
+  background: #ffffff;
+  color: #15202b;
+}
+
+.app.dark {
+  background: #181F29;
+  color: #e8e8e8;
 }
 </style>

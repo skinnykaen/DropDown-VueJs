@@ -1,23 +1,33 @@
 <template>
-  <div>
-    <div class="DropDownList" v-for="item in items" :key="item.key">
-      <li>{{ item.value }}</li>
+  <div class="DropDownList">
+    <div v-for="item in items" :key="item.id">
+      <ListItem :value="item.name"> </ListItem>
     </div>
   </div>
 </template>
 
 <script>
-// import ListItem from "@/components/ListItem";
+import ListItem from "@/components/ListItem";
 export default {
   props: ["items"],
-//   components: {
-//     ListItem,
-//   },
+  components: {
+    ListItem,
+  },
 };
 </script>
 
 <style>
 .DropDownList {
-  padding: 0;
+  width: 100%;
+  max-height: 21vh;
+  box-sizing: border-box;
+  overflow: auto;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: grey;
 }
 </style>

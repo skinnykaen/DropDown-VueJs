@@ -51,7 +51,4 @@ export default {
   margin-right: 0.5em;
   cursor: pointer;
 }
-.isOpen{
-  border: solid 1px red;
-}
 </style>

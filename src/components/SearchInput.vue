@@ -1,16 +1,20 @@
 <template>
-  <div class="SearchInput">
+  <div class="SearchInput" :class="mode">
     <input type="text" placeholder="Поиск" />
   </div>
 </template>
 
-<script></script>
+<script>
+    export default {
+        props: ["mode"]
+    }
+</script>
 
 <style>
 .SearchInput {
   margin-top: 0.5em;
   border-radius: 5px;
-  border: solid 1px grey;
+  border: solid 2px grey;
   width: 95%;
   height: 4vh;
   margin-bottom: 0.5em;
@@ -21,12 +25,22 @@
   padding: 1rem;
   border: none;
   outline: none;
-  background: none;
-  color: white;
+  color: red;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 2vh;
   line-height: 15px;
+}
+.SearchInput.dark input::placeholder {
+  color: #828282;
+}
+.SearchInput.dark input {
+  background-color: #293341;
+  color: white;
+}
+.SearchInput.light input {
+  background-color: none;
+  color: black;
 }
 </style>

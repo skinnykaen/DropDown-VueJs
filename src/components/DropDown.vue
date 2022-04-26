@@ -2,17 +2,17 @@
   <div class="dropDown">
     <span class="title">SEARCHABLE DROPDOWN</span>
     <SelectComponent @dropDown="isOpenToggling"></SelectComponent>
-    <DropDownList :isOpen="isOpen"></DropDownList>
+    <DropDownContainer :isOpen="isOpen"></DropDownContainer>
   </div>
 </template>
 
 <script>
 import SelectComponent from "@/components/SelectComponent";
-import DropDownList from "@/components/DropDownList";
+import DropDownContainer from "@/components/DropDownContainer";
 export default {
   components: {
     SelectComponent,
-    DropDownList
+    DropDownContainer
   },
   data () {
     return {

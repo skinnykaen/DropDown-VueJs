@@ -1,8 +1,8 @@
 <template>
   <div class="selectComponent">
     <span>Выберите период</span>
-    <div class="arrowDown" :class="{ isVisible: isOpen }" @click="dropDown">V</div>
-    <div class="arrowUp" :class="{ isVisible: !isOpen }" @click="dropDown">N</div>
+    <div class="arrowDown" v-if="!isOpen" @click="dropDown">V</div>
+    <div class="arrowUp" v-else @click="dropDown">X</div>
   </div>
 </template>
 
@@ -11,7 +11,6 @@ export default {
   data() {
     return {
       isOpen: false,
-      visibility: "none",
     };
   },
   methods: {
@@ -52,7 +51,7 @@ export default {
   margin-right: 0.5em;
   cursor: pointer;
 }
-.isVisible {
-  visibility: hidden;
+.isOpen{
+  border: solid 1px red;
 }
 </style>

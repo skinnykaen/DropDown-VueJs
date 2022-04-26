@@ -44,6 +44,7 @@ export default {
   color: #15202b;
   transition: background 0.3s ease-in-out;
 }
+
 .dark {
   background: #181F29;
   color: #E8E8E8;

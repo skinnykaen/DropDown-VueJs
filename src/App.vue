@@ -1,7 +1,7 @@
 <template>
   <div class="app" :class="mode">
     <SwitchTheme @toggleTheme="toggleTheme"></SwitchTheme>
-    <DropDown ></DropDown>
+    <DropDown></DropDown>
   </div>
 </template>
 
@@ -34,6 +34,9 @@ export default {
   font-family: "Roboto", sans-serif;
 }
 .app {
+  box-sizing: border-box;
+  width: 80%;
+  height: 100%;
   padding: 2rem;
   width: 100vw;
   min-height: 100vh;
@@ -41,6 +44,7 @@ export default {
   color: #15202b;
   transition: background 0.3s ease-in-out;
 }
+
 .dark {
   background: #181F29;
   color: #E8E8E8;

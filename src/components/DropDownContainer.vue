@@ -1,7 +1,7 @@
 <template>
   <div v-if="isOpen" class="DropDownContainer">
-    <SearchInput :mode="mode"> </SearchInput>
-    <DropDownList :items="items" :mode="mode"> </DropDownList>
+    <SearchInput @update:modelValue="searchChange" :class="mode"> </SearchInput>
+    <DropDownList :items="itemsToRender"> </DropDownList>
   </div>
 </template>
 
@@ -182,7 +182,7 @@ export default {
     searchChange(input) {
       if (!input) {
         this.itemsToRender = this.items;
-      }else{
+      } else {
         this.itemsToRender = this.searchInArr(input);
       }
     },

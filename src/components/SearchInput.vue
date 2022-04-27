@@ -35,7 +35,6 @@ export default {
   padding: 1rem;
   border: none;
   outline: none;
-  color: red;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;

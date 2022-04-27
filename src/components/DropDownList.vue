@@ -1,7 +1,7 @@
 <template>
   <div class="DropDownList">
     <div v-for="item in items" :key="item.id">
-      <ListItem :value="item.name"> </ListItem>
+      <ListItem :value="item.name" :class="mode"> </ListItem>
     </div>
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 import ListItem from "@/components/ListItem";
 export default {
-  props: ["items"],
+  props: ["items", "mode"],
   components: {
     ListItem,
   },

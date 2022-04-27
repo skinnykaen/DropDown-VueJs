@@ -1,7 +1,7 @@
 <template>
   <div v-if="isOpen" class="DropDownContainer">
-    <SearchInput @update:modelValue="searchChange"> </SearchInput>
-    <DropDownList :items="itemsToRender"> </DropDownList>
+    <SearchInput :mode="mode"> </SearchInput>
+    <DropDownList :items="items" :mode="mode"> </DropDownList>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import SearchInput from "@/components/SearchInput";
 import DropDownList from "@/components/DropDownList";
 export default {
-  props: ["isOpen"],
+  props: ["isOpen", "mode"],
   data() {
     return {
       items: [

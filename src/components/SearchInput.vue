@@ -1,10 +1,23 @@
 <template>
   <div class="SearchInput">
-    <input type="text" placeholder="Поиск" />
+    <input v-model.trim="search" @input="updateInput" type="text" placeholder="Поиск" />
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      search: "",
+    };
+  },
+  methods: {
+    updateInput(event) {
+      this.$emit("update:modelValue", event.target.value);
+    },
+  },
+};
+</script>
 
 <style>
 .SearchInput {

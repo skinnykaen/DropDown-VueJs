@@ -2,7 +2,7 @@
   <div class="dropDown">
     <span class="title">SEARCHABLE DROPDOWN</span>
     <SelectComponent @dropDown="isOpenToggling"></SelectComponent>
-    <DropDownContainer :isOpen="isOpen"></DropDownContainer>
+    <DropDownContainer :isOpen="isOpen" :mode="mode"></DropDownContainer>
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 import SelectComponent from "@/components/SelectComponent";
 import DropDownContainer from "@/components/DropDownContainer";
 export default {
+  props: ["mode"],
   components: {
     SelectComponent,
     DropDownContainer

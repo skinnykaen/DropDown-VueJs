@@ -1,7 +1,7 @@
 <template>
   <div class="app" :class="mode">
     <SwitchTheme @toggleTheme="toggleTheme"></SwitchTheme>
-    <DropDown></DropDown>
+    <DropDown :mode="mode"></DropDown>
   </div>
 </template>
 
@@ -9,20 +9,20 @@
 import SwitchTheme from "@/components/SwitchTheme";
 import DropDown from "@/components/DropDown";
 export default {
-  data () {
+  data() {
     return {
-      mode: 'light'
-    }
+      mode: "light",
+    };
   },
   components: {
     SwitchTheme,
     DropDown,
   },
   methods: {
-    toggleTheme(mode){
-     this.mode = mode;
-    }
-  }
+    toggleTheme(mode) {
+      this.mode = mode;
+    },
+  },
 };
 </script>
 
@@ -40,13 +40,16 @@ export default {
   padding: 2rem;
   width: 100vw;
   min-height: 100vh;
-  background: #FFFFFF;
-  color: #15202b;
   transition: background 0.3s ease-in-out;
 }
 
-.dark {
+.app.light {
+  background: #ffffff;
+  color: #15202b;
+}
+
+.app.dark {
   background: #181F29;
-  color: #E8E8E8;
+  color: #e8e8e8;
 }
 </style>

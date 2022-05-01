@@ -1,8 +1,9 @@
 <template>
-  <div class="selectComponent">
-    <span>{{value}}</span>
-    <div class="arrowDown" v-if="!isOpen" @click="dropDown">V</div>
-    <div class="arrowUp" v-else @click="dropDown">X</div>
+  <div class="selectComponent" @click="dropDown">
+    <span>{{ value[0].name }}</span>
+    <div class="arrowDown" v-if="!isOpen">V</div>
+    <div class="arrowUp" v-else-if="value[0].id" @click.stop="clearSelect">X</div>
+    <div class="arrowDown" v-else>V</div>
   </div>
 </template>
 
@@ -10,8 +11,7 @@
 export default {
   props: {
     value: {
-      type: String,
-      default: "Выберите период"
+      type: [Array, String],
     },
   },
   data() {
@@ -23,6 +23,9 @@ export default {
     dropDown() {
       this.isOpen = !this.isOpen;
       this.$emit("dropDown", this.isOpen);
+    },
+    clearSelect() {
+      this.$emit("clearSelect");
     },
   },
 };

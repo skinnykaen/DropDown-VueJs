@@ -1,17 +1,17 @@
 <template>
   <div class="DropDownList">
-    <div v-for="item in items" :key="item.id">
+    <!-- <div v-for="item in items" :key="item.id">
       <ListItem :value="item.name" :class="mode" @select="selectOnChange"> </ListItem>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import ListItem from "@/components/ListItem";
+// import ListItem from "@/components/ListItem";
 export default {
   props: ["items", "mode"],
   components: {
-    ListItem,
+    // ListItem,
   },
 
   data () {

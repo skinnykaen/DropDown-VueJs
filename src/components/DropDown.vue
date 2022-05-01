@@ -1,8 +1,14 @@
 <template>
   <div class="dropDown">
     <span class="title">SEARCHABLE DROPDOWN</span>
-    <SelectComponent @dropDown="isOpenToggling"></SelectComponent>
-    <DropDownContainer :isOpen="isOpen" :mode="mode"></DropDownContainer>
+    <SelectComponent @dropDown="isOpenToggling" :value="choice.name"></SelectComponent>
+    <DropDownContainer
+      :isOpen="isOpen"
+      :mode="mode"
+      :search="search"
+      :items="items"
+      @select="selectChange"
+    ></DropDownContainer>
   </div>
 </template>
 
@@ -10,21 +16,32 @@
 import SelectComponent from "@/components/SelectComponent";
 import DropDownContainer from "@/components/DropDownContainer";
 export default {
-  props: ["mode"],
+  props: {
+    mode: { type: String, default: "light", required: true },
+    value: { type: [Array, Object, String, Number], required: true },
+    search: { type: Boolean, default: false },
+    items: { type: [Array, Function], required: true },
+    display: { type: Function },
+    nullable: { type: Boolean },
+  },
   components: {
     SelectComponent,
-    DropDownContainer
+    DropDownContainer,
   },
-  data () {
+  data() {
     return {
-      isOpen: false
-    }
+      isOpen: false,
+      choice: {},
+    };
   },
   methods: {
-    isOpenToggling(open){
-     this.isOpen = open;
+    isOpenToggling(open) {
+      this.isOpen = open;
+    },
+    selectChange(select){
+      this.choice = select;
     }
-  }
+  },
 };
 </script>
 

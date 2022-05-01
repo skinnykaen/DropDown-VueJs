@@ -13,11 +13,20 @@ export default {
   components: {
     ListItem,
   },
+
+  data () {
+    return {
+      choice: {},
+    }
+  },
   methods: {
     selectOnChange(select) {
-      console.log(select)
-    }
-  }
+      this.items.forEach((item) => {
+        if (item.name === select) this.choice = item;
+      });
+      this.$emit("select", this.choice);
+    },
+  },
 };
 </script>
 

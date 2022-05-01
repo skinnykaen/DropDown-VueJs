@@ -1,14 +1,11 @@
 <template>
   <div class="SearchInput">
-    <input :value="modelValue" @input="updateInput" type="text" placeholder="Поиск" />
+    <input @input="updateInput" type="text" placeholder="Поиск" />
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    modelValue: [String],
-  },
   methods: {
     updateInput(event) {
       this.$emit("input", event.target.value);

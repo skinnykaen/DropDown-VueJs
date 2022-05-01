@@ -1,6 +1,6 @@
 <template>
   <div class="selectComponent">
-    <span>Выберите период</span>
+    <span>{{value}}</span>
     <div class="arrowDown" v-if="!isOpen" @click="dropDown">V</div>
     <div class="arrowUp" v-else @click="dropDown">X</div>
   </div>
@@ -8,6 +8,12 @@
 
 <script>
 export default {
+  props: {
+    value: {
+      type: String,
+      default: "Выберите период"
+    },
+  },
   data() {
     return {
       isOpen: false,

@@ -1,20 +1,22 @@
 <template>
   <div class="app" :class="mode">
     <SwitchTheme @toggleTheme="toggleTheme"></SwitchTheme>
-    <DropDown
-      :mode="mode"
-      :search="search"
-      :value="value"
-      :items="items"
-      :display="display"
-      :nullable="nullable"
-    ></DropDown>
+    <div class="dropDowns">
+      <DropDown
+        :mode="mode"
+        :search="search"
+        :value="value"
+        :items="items"
+        :display="display"
+        :nullable="nullable"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import SwitchTheme from "@/components/SwitchTheme";
-import DropDown from "@/components/DropDown";
+import DropDown from "@/comp/DropDown";
 export default {
   data() {
     return {
@@ -244,5 +246,10 @@ export default {
 .app.dark {
   background: #181f29;
   color: #e8e8e8;
+}
+
+.dropDowns {
+  display: flex;
+  align-items: flex-start;
 }
 </style>

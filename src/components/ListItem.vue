@@ -1,12 +1,23 @@
 <template>
-  <li class="ListItem">
+  <li class="ListItem" @click="select">
     <span>{{ value }}</span>
   </li>
 </template>
 
 <script>
 export default {
-    props: ["value"]
+    props: ["value"],
+    data() {
+      return {
+        selectValue: ''
+      }
+    },
+    methods: {
+      select(){
+        this.selectValue = this.value;
+        this.$emit('select', this.selectValue);
+      }
+    }
 }
 </script>
 

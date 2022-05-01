@@ -1,7 +1,7 @@
 <template>
   <div v-if="isOpen" class="DropDownContainer">
-    <SearchInput @update:modelValue="searchChange" :class="mode"> </SearchInput>
-    <DropDownList :items="itemsToRender"> </DropDownList>
+    <SearchInput v-model="search" @input="searchChange" :class="mode"> </SearchInput>
+    <DropDownList :items="itemsToRender" :mode="mode"> </DropDownList>
   </div>
 </template>
 
@@ -176,6 +176,7 @@ export default {
           name: "Наталья Друтько",
         },
       ],
+      search: "",
     };
   },
   methods: {

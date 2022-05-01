@@ -10,7 +10,14 @@
 import SelectComponent from "@/components/SelectComponent";
 import DropDownContainer from "@/components/DropDownContainer";
 export default {
-  props: ["mode"],
+  props: {
+    mode: String,
+    value: [Array, Object],
+    search: Boolean,
+    items: [Array, Function],
+    display: Function,
+    nullable: Boolean, 
+  },
   components: {
     SelectComponent,
     DropDownContainer

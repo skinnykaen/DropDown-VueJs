@@ -1,20 +1,17 @@
 <template>
   <div class="SearchInput">
-    <input v-model.trim="search" @input="updateInput" type="text" placeholder="Поиск" />
+    <input :value="modelValue" @input="updateInput" type="text" placeholder="Поиск" />
   </div>
 </template>
 
 <script>
 export default {
-  props: ["mode"],
-  data() {
-    return {
-      search: "",
-    };
+  props: {
+    modelValue: [String],
   },
   methods: {
     updateInput(event) {
-      this.$emit("update:modelValue", event.target.value);
+      this.$emit("input", event.target.value);
     },
   },
 };

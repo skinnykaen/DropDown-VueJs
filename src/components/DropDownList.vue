@@ -1,7 +1,7 @@
 <template>
   <div class="DropDownList">
     <div v-for="item in items" :key="item.id">
-      <ListItem :value="item.name" :class="mode"> </ListItem>
+      <ListItem :value="item.name" :class="mode" @select="selectOnChange"> </ListItem>
     </div>
   </div>
 </template>
@@ -13,6 +13,11 @@ export default {
   components: {
     ListItem,
   },
+  methods: {
+    selectOnChange(select) {
+      console.log(select)
+    }
+  }
 };
 </script>
 

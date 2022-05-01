@@ -15,14 +15,15 @@
 </template>
 
 <script>
-import SearchInput from "@/comp/SearchInput";
-import SelectComponent from "@/comp/SelectComponent";
-import ListItem from "@/comp/ListItem";
+import SearchInput from "@/DropDown/SearchInput";
+import SelectComponent from "@/DropDown/SelectComponent";
+import ListItem from "@/DropDown/ListItem";
 export default {
   props: {
     mode: { type: String, default: "light", required: true },
     value: { type: [Array, Object, String, Number], required: true },
     search: { type: Boolean, default: false },
+    multiple: { type: Boolean, default: false},
     items: { type: [Array, Function], required: true },
     display: { type: Function },
     nullable: { type: Boolean },
@@ -57,6 +58,9 @@ export default {
       }
     },
     selectOnChange(select) {
+      if(this.multiple){
+        console.log("привет")
+      }
       this.choice = this.items.filter((item) => item.name === select);
     },
   },

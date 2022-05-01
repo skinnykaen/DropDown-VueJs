@@ -6,6 +6,7 @@
         :mode="mode"
         :search="search"
         :value="value"
+        :multiple="true"
         :items="items"
         :display="display"
         :nullable="nullable"
@@ -15,8 +16,8 @@
 </template>
 
 <script>
-import SwitchTheme from "@/components/SwitchTheme";
-import DropDown from "@/comp/DropDown";
+import SwitchTheme from "@/DropDown/SwitchTheme";
+import DropDown from "@/DropDown/DropDown";
 export default {
   data() {
     return {

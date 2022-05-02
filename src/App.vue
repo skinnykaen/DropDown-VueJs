@@ -10,6 +10,7 @@
         :items="items"
         :display="display"
         :nullable="nullable"
+        v-model="result"
       />
     </div>
   </div>
@@ -23,7 +24,7 @@ export default {
     return {
       mode: "light",
       search: true,
-      value: "",
+      value: [],
       items: [
         {
           id: 24565,
@@ -208,6 +209,7 @@ export default {
       ],
       display: () => {},
       nullable: true,
+      result: '',
     };
   },
   components: {

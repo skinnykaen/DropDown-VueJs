@@ -1,13 +1,28 @@
 <template>
   <div class="dropDown">
     <span class="title">SEARCHABLE DROPDOWN</span>
-    <SelectComponent @dropDown="isOpenToggling" @clearSelect="clearSelect" :value="choice" />
+    <SelectComponent
+      @dropDown="isOpenToggling"
+      @clearSelect="clearSelect"
+      :valueN="choice"
+    />
     <div v-if="isOpen" class="dropDown__content">
-      <SearchInput v-if="search" @input="searchOnChange" :class="mode" />
+      <SearchInput
+        v-model="searchInput"
+        v-if="search"
+        @input="searchOnChange"
+        :class="mode"
+      />
       <div v-else></div>
       <div class="dropDown__list">
         <div v-for="item in searchItems" :key="item.id">
-          <ListItem :value="item.name" :class="mode" @select="selectOnChange" />
+          <ListItem
+            :valueN="item.name"
+            :class="mode"
+            :multiple="multiple"
+            @select="selectOnChange"
+            @checked="checkedOnChange"
+          />
         </div>
       </div>
     </div>
@@ -23,10 +38,11 @@ export default {
     mode: { type: String, default: "light", required: true },
     value: { type: [Array, Object, String, Number], required: true },
     search: { type: Boolean, default: false },
-    multiple: { type: Boolean, default: false},
+    multiple: { type: Boolean, default: false },
     items: { type: [Array, Function], required: true },
     display: { type: Function },
     nullable: { type: Boolean },
+    valueN: {type: String, Array}
   },
   components: {
     SearchInput,
@@ -34,34 +50,60 @@ export default {
     ListItem,
   },
   data() {
+    let typeOfChoice;
+    if (typeof this.value === "string") {
+      typeOfChoice = "";
+    } else {
+      typeOfChoice = [];
+    }
     return {
       isOpen: false,
-      choice: [{ name: "Выберите" }],
+      choice: typeOfChoice,
       searchItems: [...this.items].slice(0, 20),
+      searchInput: "",
     };
   },
   methods: {
     isOpenToggling(open) {
       this.isOpen = open;
-      if (!this.isOpen) {
-        this.searchItems = this.items.slice(0, 20);
-      }
     },
-    clearSelect() { 
-      this.choice = [{name: "Выберите"}]
+    clearSelect() {
+      this.searchInput = "";
+      if (typeof this.choice === "string") {
+        this.choice = "";
+      } else {
+        this.choice = [];
+      }
+      this.searchItems = this.items.slice(0, 20);
     },
     searchOnChange(input) {
       if (input) {
-        this.searchItems = this.items.filter((item) => item.name.toLowerCase().includes(input.toLowerCase())).slice(0,20);
+        this.searchItems = this.items
+          .filter((item) => item.name.toLowerCase().includes(input.toLowerCase()))
+          .slice(0, 20);
       } else {
         this.searchItems = this.items.slice(0, 20);
       }
     },
     selectOnChange(select) {
-      if(this.multiple){
-        console.log("привет")
+      if (this.multiple) {
+        let find = this.items.find((item) => item.name === select);
+        this.choice.push(find);
+      } else {
+        this.choice = this.items.find((item) => item.name === select);
+        this.searchItems = [];
+        this.searchItems.push(this.choice);
       }
-      this.choice = this.items.filter((item) => item.name === select);
+    },
+    checkedOnChange(checked) {
+      let find = this.items.find((item) => item.name === checked);
+      console.log(find)
+      let already = this.choice.find(item => item.name === find.name);
+      if(!already){
+        this.choice.push(find)
+      }else{
+        this.choice = this.choice.filter(item => item.name !== find.name)
+      }
     },
   },
 };

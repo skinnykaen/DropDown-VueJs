@@ -1,8 +1,9 @@
 <template>
   <div class="selectComponent" @click="dropDown">
-    <span>{{ value[0].name }}</span>
+    <span v-if="typeof this.value === 'string'">{{ value}}</span>
+    <span v-else>{{value[0] ? value[0].name : "Выберите"}}</span>
     <div class="arrowDown" v-if="!isOpen">V</div>
-    <div class="arrowUp" v-else-if="value[0].id" @click.stop="clearSelect">X</div>
+    <div class="arrowUp" v-else-if="value !== 'Выберите'" @click.stop="clearSelect">X</div>
     <div class="arrowDown" v-else>V</div>
   </div>
 </template>
@@ -10,8 +11,9 @@
 <script>
 export default {
   props: {
-    value: {
-      type: [Array, String],
+    valueN: {
+      type: [String, Array],
+      default: "Выберите"
     },
   },
   data() {

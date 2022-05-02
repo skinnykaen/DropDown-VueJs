@@ -1,11 +1,12 @@
 <template>
   <div class="SearchInput">
-    <input @input="updateInput" type="text" placeholder="Поиск" />
+    <input :value="value" @input="updateInput" type="text" placeholder="Поиск" />
   </div>
 </template>
 
 <script>
 export default {
+  props: ["value"],
   methods: {
     updateInput(event) {
       this.$emit("input", event.target.value);

@@ -4,13 +4,12 @@
     <div class="dropDowns">
       <DropDown
         :mode="mode"
+        v-model="value"
         :search="search"
-        :value="value"
         :multiple="true"
         :items="items"
         :display="display"
         :nullable="nullable"
-        v-model="result"
       />
     </div>
   </div>
@@ -209,7 +208,6 @@ export default {
       ],
       display: () => {},
       nullable: true,
-      result: '',
     };
   },
   components: {

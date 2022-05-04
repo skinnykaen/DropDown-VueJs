@@ -1,16 +1,16 @@
 <template>
   <li v-if="!multiple" class="ListItem" @click="select">
-    <span>{{ valueN }}</span>
+    <span>{{ value }}</span>
   </li>
   <div class="ListItem" v-else>
     <input type="checkbox" @click="checked" />
-    {{ valueN }}
+    {{ value }}
   </div>
 </template>
 
 <script>
 export default {
-  props: ["valueN", "multiple"],
+  props: ["value", "multiple"],
   data() {
     return {
       selectValue: "",
@@ -18,11 +18,11 @@ export default {
   },
   methods: {
     select() {
-      this.selectValue = this.valueN;
+      this.selectValue = this.value;
       this.$emit("select", this.selectValue);
     },
     checked() {
-      this.selectValue = this.valueN;
+      this.selectValue = this.value;
       this.$emit("checked", this.selectValue);
     },
   },
